@@ -1,0 +1,45 @@
+﻿@page "/"
+@using DataGridEditBySeparateButton.Data
+@inject WeatherForecastService ForecastService
+
+@if (forecasts == null) {
+    <h1>Loading...</h1>
+}
+else {
+    <DxDataGrid Data=@forecasts ShowFilterRow=false @bind-SelectedDataRow="@selectedForecast" @ref="MyGrid"
+                RowUpdating=@((updatingDataItem, newValues) => OnRowUpdating(updatingDataItem, newValues))>
+        <DxDataGridColumn Field=@nameof(WeatherForecast.TemperatureC) Caption="Temp. (C)"></DxDataGridColumn>
+        <DxDataGridColumn Field=@nameof(WeatherForecast.TemperatureF) Caption="Temp. (F)"></DxDataGridColumn>
+        <DxDataGridColumn Field=@nameof(WeatherForecast.Summary) Caption="Summary"></DxDataGridColumn>
+        <DxDataGridDateEditColumn Field=@nameof(WeatherForecast.Date)></DxDataGridDateEditColumn>
+    </DxDataGrid>
+}
+<button id="editButton" @onclick="@(() => { edit(); })">Edit</button>
+<button id="deleteButton" @onclick="@(() => { delete(); })">Delete</button>
+@functions {
+    DevExpress.Blazor.DxDataGrid<WeatherForecast> MyGrid;
+    WeatherForecast[] forecasts;
+    WeatherForecast selectedForecast;
+
+    protected override async Task OnInitAsync() {
+        forecasts = await ForecastService.GetForecastAsync();
+    }
+
+    void edit() {
+        if (selectedForecast != null) {
+            (MyGrid as DevExpress.Blazor.Grid.Internal.IDataGridColumnOwner).RowEditStart(selectedForecast);
+        }
+    }
+
+    async void OnRowUpdating(WeatherForecast dataItem, Dictionary<string, object> newValue) {
+        forecasts = await ForecastService.Update(dataItem, newValue);
+        await Invoke(StateHasChanged);
+    }
+
+    async void delete() {
+        if (selectedForecast != null) {
+            forecasts = await ForecastService.Remove(selectedForecast);
+            await Invoke(StateHasChanged);
+        }
+    }
+}
