@@ -6,7 +6,7 @@
     <h1>Loading...</h1>
 }
 else {
-    <DxDataGrid Data=@forecasts ShowFilterRow=false @bind-SelectedDataRow="@selectedForecast"  @ref:suppressField @ref="MyGrid"
+    <DxDataGrid Data=@forecasts ShowFilterRow=false @bind-SingleSelectedDataRow="@selectedForecast" @ref="MyGrid"
                 RowUpdating=@((updatingDataItem, newValues) => OnRowUpdating(updatingDataItem, newValues))>
         <DxDataGridColumn Field=@nameof(WeatherForecast.TemperatureC) Caption="Temp. (C)"></DxDataGridColumn>
         <DxDataGridColumn Field=@nameof(WeatherForecast.TemperatureF) Caption="Temp. (F)"></DxDataGridColumn>
