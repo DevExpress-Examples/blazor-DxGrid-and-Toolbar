@@ -34,13 +34,11 @@ else {
 
     async void OnRowUpdating(WeatherForecast dataItem, Dictionary<string, object> newValue) {
         forecasts = await ForecastService.Update(dataItem, newValue);
-        await InvokeAsync(StateHasChanged);
     }
 
     async void Delete() {
         if (selectedForecast != null) {
             forecasts = await ForecastService.Remove(selectedForecast);
-            await InvokeAsync(StateHasChanged);
         }
     }
 }
