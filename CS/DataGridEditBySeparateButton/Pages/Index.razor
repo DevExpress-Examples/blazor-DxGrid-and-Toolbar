@@ -9,10 +9,10 @@ else {
     <DxDataGrid Data=@forecasts ShowFilterRow=false @bind-SingleSelectedDataRow="@selectedForecast" @ref="MyGrid"
                 RowUpdating=@((updatingDataItem, newValues) => OnRowUpdating(updatingDataItem, newValues))>
         <DxDataGridColumn Field=@nameof(WeatherForecast.TemperatureC) Caption="Temp. (C)"></DxDataGridColumn>
-        <DxDataGridColumn Field=@nameof(WeatherForecast.TemperatureF) Caption="Temp. (F)"></DxDataGridColumn>
+        <DxDataGridColumn Field=@nameof(WeatherForecast.TemperatureF) Caption="Temp. (F)" EditorVisible="false"></DxDataGridColumn>
         <DxDataGridColumn Field=@nameof(WeatherForecast.Summary) Caption="Summary"></DxDataGridColumn>
-        <DxDataGridDateEditColumn Field=@nameof(WeatherForecast.Date) DisplayFormatString="dd/MM/yyyy"
-                EditFormatString="dd/MM/yyyy"></DxDataGridDateEditColumn>
+        <DxDataGridDateEditColumn Field=@nameof(WeatherForecast.Date) DisplayFormat="dd/MM/yyyy"
+               EditorDisplayFormat="dd/MM/yyyy"></DxDataGridDateEditColumn>
     </DxDataGrid>
 }
 <button id="editButton" @onclick="@(() => { Edit(); })">Edit</button>
