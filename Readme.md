@@ -11,6 +11,8 @@
 
 ### Blazor Data Grid - How to edit/delete the selected row by clicking on external buttons
 
+The Data Grid was moved to maintenance support mode. No new features/capabilities will be added to this component. We recommend that you [migrate](https://docs.devexpress.com/Blazor/403162/grid/migrate-from-data-grid-to-grid) to the [Grid](https://docs.devexpress.com/Blazor/403143/grid) component. 
+
 This example illustrates how to start editing/delete the selected row in DxDataGrid programmatically. 
 Our Data Grid provides the *StartRowEdit* method, which accepts a data item from the grid's data source. 
 It's possible to use this method to edit the selected row when some external button is clicked. 
