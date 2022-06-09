@@ -1,4 +1,5 @@
 ﻿@page "/"
+
 @using DataGridEditBySeparateButton.Data
 @inject WeatherForecastService ForecastService
 
@@ -6,7 +7,10 @@
     <h1>Loading...</h1>
 }
 else {
-    <DxDataGrid Data=@forecasts ShowFilterRow=false @bind-SingleSelectedDataRow="@selectedForecast" @ref="MyGrid"
+    <DxDataGrid Data=@forecasts 
+                ShowFilterRow=false 
+                @bind-SingleSelectedDataRow="@selectedForecast" 
+                @ref="MyGrid"
                 RowUpdating=@((updatingDataItem, newValues) => OnRowUpdating(updatingDataItem, newValues))>
         <DxDataGridColumn Field=@nameof(WeatherForecast.TemperatureC) Caption="Temp. (C)"></DxDataGridColumn>
         <DxDataGridColumn Field=@nameof(WeatherForecast.TemperatureF) Caption="Temp. (F)" EditorVisible="false"></DxDataGridColumn>
@@ -17,10 +21,11 @@ else {
 }
 <button id="editButton" @onclick="@(() => { Edit(); })">Edit</button>
 <button id="deleteButton" @onclick="@(() => { Delete(); })">Delete</button>
-@functions {
-    DevExpress.Blazor.DxDataGrid<WeatherForecast> MyGrid;
-    WeatherForecast[] forecasts;
-    WeatherForecast selectedForecast;
+
+@code {
+    DevExpress.Blazor.DxDataGrid<WeatherForecast>? MyGrid;
+    WeatherForecast[]? forecasts;
+    WeatherForecast? selectedForecast;
 
     protected override async Task OnInitializedAsync() {
         forecasts = await ForecastService.GetForecastAsync();
