@@ -1,22 +1,8 @@
 ﻿@page "/"
 @namespace DataGridEditBySeparateButton.Pages
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
+@{
+    Layout = "_Layout";
+}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>How to edit/delete the selected row by clicking on external buttons</title>
-    <meta name="description" content="This example illustrates how to start editing/delete the selected row in DxDataGrid programmatically." />
-    <base href="~/" />
-    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
-    <link href="css/site.css" rel="stylesheet" />
-    <link href="_content/DevExpress.Blazor/dx-blazor.css" rel="stylesheet" />
-</head>
-<body>
-    <app>@(await Html.RenderComponentAsync<App>(RenderMode.ServerPrerendered))</app>
-
-    <script src="_framework/blazor.server.js"></script>
-</body>
-</html>
+<component type="typeof(App)" render-mode="ServerPrerendered" />

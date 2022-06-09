@@ -1,17 +1,9 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace DataGridEditBySeparateButton.Data
-{
-    public class WeatherForecastService
-    {
+namespace DataGridEditBySeparateButton.Data {
+    public class WeatherForecastService {
         private static string[] Summaries = new[]
         {
             "Hot", "Warm", "Cold", "Freezing"
         };
-
         private List<WeatherForecast> CreateForecast() {
             var rng = new Random();
             DateTime startDate = DateTime.Now;
