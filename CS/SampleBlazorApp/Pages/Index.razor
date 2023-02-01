@@ -1,0 +1,131 @@
+﻿@page "/"
+
+@using Grid.Northwind
+@using Microsoft.EntityFrameworkCore
+@inject IDbContextFactory<NorthwindContext> NorthwindContextFactory
+@implements IDisposable
+
+<div class="card p-2">
+    <DxToolbar>
+        <DxToolbarItem Text="New"
+                       IconCssClass="grid-new-row"
+                       Click="OnCreateNew" />
+        <DxToolbarItem Text="Edit"
+                       IconCssClass="grid-edit-row"
+                       Click="OnEdit" />
+        <DxToolbarItem Text="Delete"
+                       IconCssClass="grid-delete-row"
+                       Click="OnDelete" />
+        <DxToolbarItem Text="Column Chooser"
+                       RenderStyle="ButtonRenderStyle.Secondary"
+                       IconCssClass="grid-column-chooser"
+                       CssClass="column-chooser-button"
+                       BeginGroup="true"
+                       Click="OnShowColumnChooser" />
+    </DxToolbar>
+</div>
+
+<p/>
+
+<DxGrid Data="Data"
+        EditModelSaving="OnEditModelSaving"
+        DataItemDeleting="OnDataItemDeleting"
+        KeyFieldName="EmployeeId"
+        EditMode="GridEditMode.PopupEditForm"
+        FocusedRowEnabled=true
+        @ref=MyGrid>
+    <Columns>
+        <DxGridDataColumn FieldName="FirstName" />
+        <DxGridDataColumn FieldName="LastName" />
+        <DxGridDataColumn FieldName="Title" />
+        <DxGridDataColumn FieldName="HireDate" />
+    </Columns>
+    <EditFormTemplate Context="editFormContext">
+        @{
+            var employee = (Employee)editFormContext.EditModel;
+        }
+        <DxFormLayout>
+            <DxFormLayoutItem Caption="First Name:">
+                <DxTextBox @bind-Text="@employee.FirstName" />
+            </DxFormLayoutItem>
+            <DxFormLayoutItem Caption="Last Name:">
+                <DxTextBox @bind-Text="@employee.LastName" />
+            </DxFormLayoutItem>
+            <DxFormLayoutItem Caption="Title:">
+                <DxTextBox @bind-Text="@employee.Title" />
+            </DxFormLayoutItem>
+            <DxFormLayoutItem Caption="Hire Date:">
+                <DxDateEdit @bind-Date="@employee.HireDate" />
+            </DxFormLayoutItem>
+            <DxFormLayoutItem ColSpanMd="12">
+                <ValidationSummary />
+            </DxFormLayoutItem>
+        </DxFormLayout>
+    </EditFormTemplate>
+</DxGrid>
+
+@code {
+    IGrid MyGrid { get; set; }
+    IEnumerable<object> Data { get; set; }
+    NorthwindContext Northwind { get; set; }
+
+    protected override void OnInitialized() {
+        Northwind = NorthwindContextFactory.CreateDbContext();
+        Data = Northwind.Employees
+            .ToList();
+    }
+
+    public void Dispose() {
+        Northwind?.Dispose();
+    }
+
+    async Task OnEditModelSaving(GridEditModelSavingEventArgs e) {
+        var editModel = (Employee)e.EditModel;
+        // Re-query a data item from the database.
+        var dataItem = e.IsNew ? new Employee() : Northwind.Employees.Find(editModel.EmployeeId);
+        // Assign changes from the edit model to the data item.
+        if (dataItem != null) {
+            dataItem.FirstName = editModel.FirstName;
+            dataItem.LastName = editModel.LastName;
+            dataItem.Title = editModel.Title;
+            dataItem.HireDate = editModel.HireDate;
+            // Post changes to the database.
+            if (e.IsNew)
+                await Northwind.AddAsync(dataItem);
+            await Northwind.SaveChangesAsync();
+            // Reload the entire Grid.
+            Data = await Northwind.Employees.ToListAsync();
+        }
+    }
+
+    async Task OnDataItemDeleting(GridDataItemDeletingEventArgs e) {
+        // Re-query a data item from the database.
+        var dataItem = Northwind.Employees.Find((e.DataItem as Employee).EmployeeId);
+        if (dataItem != null) {
+            // Remove the data item from the database.
+            Northwind.Remove(dataItem);
+            await Northwind.SaveChangesAsync();
+            // Reload the entire Grid.
+            Data = await Northwind.Employees.ToListAsync();
+        }
+    }
+
+
+    async Task OnCreateNew(ToolbarItemClickEventArgs e) {
+        await MyGrid.StartEditNewRowAsync();
+    }
+
+    async Task OnEdit(ToolbarItemClickEventArgs e) {
+        if (MyGrid.GetFocusedDataItem() != null)
+            await MyGrid.StartEditDataItemAsync(MyGrid.GetFocusedDataItem());
+    }
+
+    void OnDelete(ToolbarItemClickEventArgs e) {
+        if (MyGrid.GetFocusedDataItem() != null)
+            MyGrid.ShowDataItemDeleteConfirmation(MyGrid.GetFocusedDataItem());
+    }
+
+    void OnShowColumnChooser() {
+        MyGrid.ShowColumnChooser(".column-chooser-button");
+    }
+}
