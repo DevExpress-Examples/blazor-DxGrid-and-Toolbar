@@ -1,0 +1,43 @@
+.menu-item-selected {
+    background-color: #d5d8db;
+}
+
+.grid-column-chooser,
+.grid-new-row,
+.grid-edit-row,
+.grid-delete-row {
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-color: gray;
+}
+
+.dropdown-item:active .grid-column-chooser,
+.dropdown-item:active .grid-new-row,
+.dropdown-item:active .grid-edit-row,
+.dropdown-item:active .grid-delete-row {
+    background-color: white;
+}
+
+.dropdown-item.disabled .grid-new-row,
+.dropdown-item.disabled .grid-edit-row,
+.dropdown-item.disabled .grid-delete-row {
+    background-color: #c3c2c2;
+}
+
+.grid-column-chooser {
+    mask-image: url(../images/icons/column-chooser.svg);
+    -webkit-mask-image: url(../images/icons/column-chooser.svg);
+}
+.grid-new-row {
+    mask-image: url(../images/icons/new-row.svg);
+    -webkit-mask-image: url(../images/icons/new-row.svg);
+}
+.grid-edit-row {
+    mask-image: url(../images/icons/edit-row.svg);
+    -webkit-mask-image: url(../images/icons/edit-row.svg);
+}
+.grid-delete-row {
+    mask-image: url(../images/icons/delete-row.svg);
+    -webkit-mask-image: url(../images/icons/delete-row.svg);
+}
