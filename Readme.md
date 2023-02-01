@@ -9,7 +9,9 @@
 
 This example demonstrates how to implement CRUD-related buttons for [Blazor Grid](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid) in [Blazor Toolbar](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxToolbar).
 
-![Grid and Toolbar](grid-and-toobar.png)
+
+
+![Grid and Toolbar](dxgrid-and-toobar.png)
 
 ## Files to Review
 
