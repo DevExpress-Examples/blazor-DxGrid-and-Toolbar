@@ -4,16 +4,22 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
 <!-- default file list -->
-*Files to look at*:
 
-* [Index.razor](./CS/DataGridEditBySeparateButton/Pages/Index.razor)
-<!-- default file list end -->
+# Blazor Grid  - Implement CRUD-Related Buttons in Toolbar
 
-### Blazor Data Grid - How to edit/delete the selected row by clicking on external buttons
+This example demonstrates how to implement CRUD-related buttons for [Blazor Grid](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid) in [Blazor Toolbar](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxToolbar).
 
-The Data Grid was moved to maintenance support mode. No new features/capabilities will be added to this component. We recommend that you [migrate](https://docs.devexpress.com/Blazor/403162/grid/migrate-from-data-grid-to-grid) to the [Grid](https://docs.devexpress.com/Blazor/403143/grid) component. 
+![Grid and Toolbar](grid-and-toobar.png)
 
-This example illustrates how to start editing/delete the selected row in DxDataGrid programmatically. 
-Our Data Grid provides the *StartRowEdit* method, which accepts a data item from the grid's data source. 
-It's possible to use this method to edit the selected row when some external button is clicked. 
-Also, this method accepts null as an argument to start a new row editing. 
+## Files to Review
+
+- [Index.razor](./CS/SampleBlazorApp/Pages/Index.razor)
+
+## Documentation
+
+- [DxGrid](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid)
+- [DxToolbar](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxToolbar)
+
+## More Examples
+
+- [Blazor Grid - Display a Context Menu](https://github.com/DevExpress-Examples/blazor-dxgrid-show-context-menu)
