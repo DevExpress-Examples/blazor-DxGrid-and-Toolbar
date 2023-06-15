@@ -16,7 +16,7 @@ builder.Services.Configure<DevExpress.Blazor.Configuration.GlobalOptions>(option
 });
 builder.Services.AddDbContextFactory<NorthwindContext>((sp, options) => {
     var env = sp.GetRequiredService<IWebHostEnvironment>();
-    var dbPath = Path.Combine(env.ContentRootPath, "Northwind-5e44b51f.mdf");
+    var dbPath = Path.Combine(env.ContentRootPath, "Northwind.mdf");
     options.UseSqlServer("Server=(localdb)\\MSSQLLocalDB;Integrated Security=true;AttachDbFileName=" + dbPath);
 });
 

@@ -41,21 +41,18 @@
         <DxGridDataColumn FieldName="HireDate" />
     </Columns>
     <EditFormTemplate Context="editFormContext">
-        @{
-            var employee = (Employee)editFormContext.EditModel;
-        }
         <DxFormLayout>
             <DxFormLayoutItem Caption="First Name:">
-                <DxTextBox @bind-Text="@employee.FirstName" />
+                @editFormContext.GetEditor("FirstName")
             </DxFormLayoutItem>
             <DxFormLayoutItem Caption="Last Name:">
-                <DxTextBox @bind-Text="@employee.LastName" />
+                @editFormContext.GetEditor("LastName")
             </DxFormLayoutItem>
             <DxFormLayoutItem Caption="Title:">
-                <DxTextBox @bind-Text="@employee.Title" />
+                @editFormContext.GetEditor("Title")
             </DxFormLayoutItem>
             <DxFormLayoutItem Caption="Hire Date:">
-                <DxDateEdit @bind-Date="@employee.HireDate" />
+                @editFormContext.GetEditor("HireDate")
             </DxFormLayoutItem>
             <DxFormLayoutItem ColSpanMd="12">
                 <ValidationSummary />
