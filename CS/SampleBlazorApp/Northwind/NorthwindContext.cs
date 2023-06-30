@@ -19,9 +19,6 @@ namespace Grid.Northwind {
         public virtual DbSet<Employee> Employees { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
-            if(!optionsBuilder.IsConfigured) {
-                optionsBuilder.UseSqlServer("Server=.\\sqlexpress;Database=Northwind;Integrated Security=true");
-            }
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder) {
