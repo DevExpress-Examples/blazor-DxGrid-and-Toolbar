@@ -5,28 +5,6 @@
 @inject IDbContextFactory<NorthwindContext> NorthwindContextFactory
 @implements IDisposable
 
-<div class="card p-2">
-    <DxToolbar>
-        <DxToolbarItem Text="New"
-                       IconCssClass="grid-new-row"
-                       Click="OnCreateNew" />
-        <DxToolbarItem Text="Edit"
-                       IconCssClass="grid-edit-row"
-                       Click="OnEdit" />
-        <DxToolbarItem Text="Delete"
-                       IconCssClass="grid-delete-row"
-                       Click="OnDelete" />
-        <DxToolbarItem Text="Column Chooser"
-                       RenderStyle="ButtonRenderStyle.Secondary"
-                       IconCssClass="grid-column-chooser"
-                       CssClass="column-chooser-button"
-                       BeginGroup="true"
-                       Click="OnShowColumnChooser" />
-    </DxToolbar>
-</div>
-
-<p/>
-
 <DxGrid Data="Data"
         EditModelSaving="OnEditModelSaving"
         DataItemDeleting="OnDataItemDeleting"
@@ -40,6 +18,25 @@
         <DxGridDataColumn FieldName="Title" />
         <DxGridDataColumn FieldName="HireDate" />
     </Columns>
+    <ToolbarTemplate>
+        <DxToolbar>
+            <DxToolbarItem Text="New"
+                           IconCssClass="grid-new-row"
+                           Click="OnCreateNew" />
+            <DxToolbarItem Text="Edit"
+                           IconCssClass="grid-edit-row"
+                           Click="OnEdit" />
+            <DxToolbarItem Text="Delete"
+                           IconCssClass="grid-delete-row"
+                           Click="OnDelete" />
+            <DxToolbarItem Text="Column Chooser"
+                           RenderStyle="ButtonRenderStyle.Secondary"
+                           IconCssClass="grid-column-chooser"
+                           CssClass="column-chooser-button"
+                           BeginGroup="true"
+                           Click="OnShowColumnChooser" />
+        </DxToolbar>
+    </ToolbarTemplate>
     <EditFormTemplate Context="editFormContext">
         <DxFormLayout>
             <DxFormLayoutItem Caption="First Name:">
