@@ -4,13 +4,13 @@
 [![](https://img.shields.io/badge/📖_How_to_use_DevExpress_Examples-e9f6fc?style=flat-square)](https://docs.devexpress.com/GeneralInformation/403183)
 <!-- default badges end -->
 
-# Blazor Grid  - Implement CRUD-Related Buttons in Toolbar
+# Blazor Grid - Add CRUD-related Buttons for the Blazor Grid to the DevExpress Blazor Toolbar
 
-This example demonstrates how to implement CRUD-related buttons for [Blazor Grid](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid) in [Blazor Toolbar](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxToolbar).
+This example adds CRUD-related buttons for the [Blazor Grid](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid) to the DevExpress [Blazor Toolbar](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxToolbar).
 
 ![Grid and Toolbar](dxgrid-and-toobar.png)
 
-The [ToolbarTemplate](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.ToolbarTemplate) allows you to add a toolbar at the top edge of a Grid component. This template contains all styles out of the box so that you do not need to write your own CSS rules. You can use the [Grid](http://docs.devexpress.com/Blazor/DevExpress.Blazor.GridToolbarTemplateContext.Grid) object in the template's context to access the component's instance and implement data shaping operations as Toolbar buttons.
+The DevExpress [ToolbarTemplate](https://docs.devexpress.com/Blazor/DevExpress.Blazor.DxGrid.ToolbarTemplate) allows you to add a toolbar to the top edge of our Blazor Grid component. This template includes all necessary styles. As such, you do not need to write your own CSS rules. You can use the [Grid](http://docs.devexpress.com/Blazor/DevExpress.Blazor.GridToolbarTemplateContext.Grid) object in the template's context to access a component instance and implement data shaping operations as Toolbar buttons.
 
 ## Files to Review
 
