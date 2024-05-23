@@ -79,10 +79,7 @@
         var dataItem = e.IsNew ? new Employee() : Northwind.Employees.Find(editModel.EmployeeId);
         // Assign changes from the edit model to the data item.
         if (dataItem != null) {
-            dataItem.FirstName = editModel.FirstName;
-            dataItem.LastName = editModel.LastName;
-            dataItem.Title = editModel.Title;
-            dataItem.HireDate = editModel.HireDate;
+            e.CopyChangesToDataItem();
             // Post changes to the database.
             if (e.IsNew)
                 await Northwind.AddAsync(dataItem);
