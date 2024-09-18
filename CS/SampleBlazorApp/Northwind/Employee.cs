@@ -14,7 +14,7 @@ namespace Grid.Northwind {
         public string TitleOfCourtesy { get; set; }
         public Nullable<System.DateTime> BirthDate { get; set; }
         [Required]
-        [Range(typeof(DateTime), "1/1/1992", "1/1/2000",
+        [Range(typeof(DateTime), "1/1/1992", "1/1/2025",
         ErrorMessage = "HireDate must be between {1:d} and {2:d}")]
         public Nullable<System.DateTime> HireDate { get; set; }
         public string Address { get; set; }
