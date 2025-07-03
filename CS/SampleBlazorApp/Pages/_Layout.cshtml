@@ -1,4 +1,5 @@
 ﻿@using Microsoft.AspNetCore.Components.Web
+@using DevExpress.Blazor
 @namespace SampleBlazorApp.Pages
 @addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
 
@@ -8,7 +9,11 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <base href="~/" />
-    <link href="_content/DevExpress.Blazor.Themes/blazing-berry.bs5.css" rel="stylesheet" />
+    @foreach (var file in Themes.Fluent.GetFilePaths()) {
+        <link href="@file" rel="stylesheet" />
+    }
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+
     <link href="~/css/site.css" rel="stylesheet" />
     <link href="~/css/icons.css" rel="stylesheet" />
     <link href="SampleBlazorApp.styles.css" rel="stylesheet" />
