@@ -12,7 +12,7 @@ builder.Services.AddServerSideBlazor();
 builder.Services.AddDevExpressBlazor(configure => configure.BootstrapVersion = DevExpress.Blazor.BootstrapVersion.v5);
 builder.Services.AddSingleton<WeatherForecastService>();
 builder.Services.Configure<DevExpress.Blazor.Configuration.GlobalOptions>(options => {
-    options.BootstrapVersion = DevExpress.Blazor.BootstrapVersion.v5;
+    options.SizeMode = DevExpress.Blazor.SizeMode.Medium;
 });
 builder.Services.AddDbContextFactory<NorthwindContext>((sp, options) => {
     var env = sp.GetRequiredService<IWebHostEnvironment>();
