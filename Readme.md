@@ -17,7 +17,7 @@ Our Data Grid provides the *StartRowEdit* method, which accepts a data item fr
 It's possible to use this method to edit the selected row when some external button is clicked. 
 Also, this method accepts null as an argument to start a new row editing. 
 <!-- feedback -->
-## Does this example address your development requirements/objectives?
+## Does This Example Address Your Development Requirements/Objectives?
 
 [<img src="https://www.devexpress.com/support/examples/i/yes-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=blazor-grid-and-toolbar&~~~was_helpful=yes) [<img src="https://www.devexpress.com/support/examples/i/no-button.svg"/>](https://www.devexpress.com/support/examples/survey.xml?utm_source=github&utm_campaign=blazor-grid-and-toolbar&~~~was_helpful=no)
 
